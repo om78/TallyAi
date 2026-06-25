@@ -133,9 +133,9 @@ Ensures the application continues serving useful data even when AI responses are
 ```text
 project-root/
 │
-├── ai-accounting/          # React Frontend
+├── Frontend/          # React Frontend
 │
-├── tally-backend/          # Express Backend
+├── Backend/          # Express Backend
 │
 ├── accounting.db           # SQLite Database (auto-generated)
 │
@@ -165,7 +165,7 @@ https://aistudio.google.com/
 Navigate to the backend folder:
 
 ```bash
-cd tally-backend
+cd Backend
 ```
 
 Install dependencies:
@@ -208,7 +208,7 @@ Open another terminal.
 Navigate to the frontend:
 
 ```bash
-cd ai-accounting
+cd Frontend
 ```
 
 Install dependencies:
@@ -319,35 +319,17 @@ Use the **Danger Zone** to:
 
 # 📸 Screenshots
 
-Add screenshots here.
+<img width="1882" height="902" alt="image" src="https://github.com/user-attachments/assets/50203b85-40a3-46a3-bbfa-decdecef04e4" />
+<img width="1917" height="898" alt="image" src="https://github.com/user-attachments/assets/af61791b-c313-40bb-b24e-ebe38b0f4b8b" />
+<img width="1917" height="902" alt="image" src="https://github.com/user-attachments/assets/dad67c56-8bc8-45ba-b77b-19ca9914da39" />
 
-Example:
 
-```text
-screenshots/
-    dashboard.png
-    ai-assistant.png
-    upload-page.png
-    data-viewer.png
 ```
 
 ---
 
-# 🔮 Future Improvements
-
-* PDF Financial Reports
-* Excel Export
-* Multi-user Authentication
-* Role-based Access Control
-* PostgreSQL Support
-* Cloud Deployment
-* Scheduled Financial Reports
-* AI-generated Monthly Business Insights
-
----
-
 # 👨‍💻 Author
-
+Om Sonavane
 Developed as an AI-powered internal accounting tool for simplifying financial analysis using modern web technologies and Google's Gemini AI.
 
 ---
