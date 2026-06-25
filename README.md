@@ -141,6 +141,7 @@ project-root/
 │
 └── README.md
 ```
+<img width="1536" height="1024" alt="ChatGPT Image Jun 25, 2026, 06_40_34 PM" src="https://github.com/user-attachments/assets/0130dee9-143d-46af-bb8c-ffd35a5552ff" />
 
 ---
 
@@ -319,10 +320,9 @@ Use the **Danger Zone** to:
 
 # 📸 Screenshots
 
-<img width="1882" height="902" alt="image" src="https://github.com/user-attachments/assets/50203b85-40a3-46a3-bbfa-decdecef04e4" />
-<img width="1917" height="898" alt="image" src="https://github.com/user-attachments/assets/af61791b-c313-40bb-b24e-ebe38b0f4b8b" />
-<img width="1917" height="902" alt="image" src="https://github.com/user-attachments/assets/dad67c56-8bc8-45ba-b77b-19ca9914da39" />
-
+<img width="1901" height="905" alt="image" src="https://github.com/user-attachments/assets/0da1a97d-617c-497e-b0bb-22b47b15046a" />
+<img width="1913" height="900" alt="image" src="https://github.com/user-attachments/assets/2da06b50-8e5a-4be3-a654-7847f0006428" />
+<img width="1912" height="902" alt="image" src="https://github.com/user-attachments/assets/637398b2-42bf-4d3f-a4d0-0b7794684309" />
 
 ```
 
