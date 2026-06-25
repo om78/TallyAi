@@ -37,8 +37,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
         if (err) console.error(err);
 
         const stmt = db.prepare(`INSERT INTO transactions 
-                    (date, voucher_no, particulars, type, amount, status) 
-                    VALUES (?, ?, ?, ?, ?, ?)`);
+                    (date, voucher_no, particulars, type, amount, gst_amount, status) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?)`);
 
         db.serialize(() => {
           db.run("BEGIN TRANSACTION");
@@ -49,12 +49,12 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
               row.Particulars || row.particulars || "",
               row.Type || row.type || "",
               parseFloat(row.Amount || row.amount || 0),
+              parseFloat(row["GST"] || row.gst_amount || 0),
               row.Status || row.status || "Paid",
             ]);
           });
           db.run("COMMIT");
           stmt.finalize();
-
           db.run(
             `INSERT INTO upload_history (filename, row_count, status) VALUES (?, ?, ?)`,
             [originalFileName, results.length, "Processed"],
@@ -99,19 +99,22 @@ app.post("/api/ask", async (req, res) => {
 
     try {
       const schemaPrompt = `
-            You are an expert SQL data analyst. I have a SQLite database table named 'transactions' with this schema:
-            - date (TEXT)
-            - voucher_no (TEXT)
-            - particulars (TEXT) : Usually the customer or vendor name.
-            - type (TEXT) : 'Sales', 'Expense', or 'Receipt'
-            - amount (REAL) : The monetary value
-            - status (TEXT) : 'Paid' or 'Unpaid'
+        You are an expert SQL data analyst. I have a SQLite database table named 'transactions' with this schema:
+        - date (TEXT)
+        - voucher_no (TEXT)
+        - particulars (TEXT) : Usually the customer or vendor name.
+        - type (TEXT) : 'Sales', 'Expense', or 'Receipt'
+        - amount (REAL) : The total monetary value
+        - gst_amount (REAL) : The tax or GST collected/paid
+        - status (TEXT) : 'Paid' or 'Unpaid'
 
-            Convert the user question into a valid SQLite query.
-            Return ONLY the SQL query. No markdown, no explanations.
+        To calculate "GST Payable", sum the gst_amount for 'Sales' and subtract the gst_amount for 'Expense'.
 
-            User Question: "${question}"
-            `;
+        Convert the user question into a valid SQLite query.
+        Return ONLY the SQL query. No markdown, no explanations.
+
+        User Question: "${question}"
+        `;
 
       const sqlResult = await model.generateContent(schemaPrompt);
       let sqlQuery = sqlResult.response.text().trim();

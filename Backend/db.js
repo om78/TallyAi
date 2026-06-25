@@ -17,6 +17,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
             particulars TEXT,
             type TEXT,
             amount REAL,
+            gst_amount REAL, 
             status TEXT
         )`);
 
